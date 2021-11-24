@@ -12,7 +12,7 @@
  * 
  */
 int main() {
-
+    int nCandidatos = 3;
     return (EXIT_SUCCESS);
 }
 
