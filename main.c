@@ -96,7 +96,7 @@ int main() {
     
     printf("Qual o voto do eleitor 5?\n");
     scanf("%d",&votoEleitor5);
-    switch(votoEleitor4){
+    switch(votoEleitor5){
         case 1:
             nVotosCandidato1 +=1;
             break;
@@ -110,17 +110,40 @@ int main() {
             printf("Voto errado!\n");
     }
 
+    printf("Votos Candidato 1: %d\n",nVotosCandidato1);
+    printf("Votos Candidato 2: %d\n",nVotosCandidato2);
+    printf("Votos Candidato 3: %d\n",nVotosCandidato3);
     
+    //Assume inicialmente que Candidato 1 é o vencedor
+    int candidatoVencedor = 1;
+    int nVotosVencedor = nVotosCandidato1;
+    int houveEmpate = 0;
+        
+    //Verifica se 2 é melhor que o vencedor atual
+    if(nVotosCandidato2 > nVotosVencedor){
+        candidatoVencedor = 2;
+        nVotosVencedor = nVotosCandidato2;
+        houveEmpate = 0;
+    }else if(nVotosCandidato2 == nVotosVencedor){
+        houveEmpate = 1;
+    }
     
-    printf("O eleitor 1 votou em: %d\n",votoEleitor1);
-    printf("O eleitor 2 votou em: %d\n",votoEleitor2);
-    printf("O eleitor 3 votou em: %d\n",votoEleitor3);
-    printf("O eleitor 4 votou em: %d\n",votoEleitor4);
-    printf("O eleitor 5 votou em: %d\n",votoEleitor5);
+    //Verifica se 3 é melhor que o vencedor atual
+    if(nVotosCandidato3 > nVotosVencedor){
+        candidatoVencedor = 3;
+        nVotosVencedor = nVotosCandidato3;
+        houveEmpate = 0;
+    }else if(nVotosCandidato3 == nVotosVencedor){
+        houveEmpate = 1;
+    }
     
+    if(houveEmpate == 0){
+        printf("O vencedor é o candidato %d\n",candidatoVencedor);
+    }else{
+        printf("Empate! O que fazer??\n");
+    }
     
-    printf("\n\nFavor calcular o resultado manualmente!");
-    
+        
     return (EXIT_SUCCESS);
 }
 
