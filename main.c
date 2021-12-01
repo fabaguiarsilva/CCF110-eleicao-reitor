@@ -33,18 +33,84 @@ int main() {
     
     printf("Qual o voto do eleitor 1?\n");
     scanf("%d",&votoEleitor1);
+    if(votoEleitor1 == 1){
+        nVotosCandidato1 += 1;
+    }else if(votoEleitor1 == 2){
+        nVotosCandidato2 += 1;
+    }else if(votoEleitor1 == 3){
+        nVotosCandidato3 += 1;
+    }    
     
     printf("Qual o voto do eleitor 2?\n");
     scanf("%d",&votoEleitor2);
+    switch(votoEleitor2){
+        case 1:
+            nVotosCandidato1 +=1;
+            break;
+        case 2:
+            nVotosCandidato2 +=1;
+            break;
+        case 3:
+            nVotosCandidato3 +=1;
+            break;
+        default:
+            printf("Voto errado!\n");
+    }
+    
     
     printf("Qual o voto do eleitor 3?\n");
     scanf("%d",&votoEleitor3);
+    switch(votoEleitor3){
+        case 1:
+            nVotosCandidato1 +=1;
+            break;
+        case 2:
+            nVotosCandidato2 +=1;
+            break;
+        case 3:
+            nVotosCandidato3 +=1;
+            break;
+        default:
+            printf("Voto errado!\n");
+    }
+
+    
     
     printf("Qual o voto do eleitor 4?\n");
     scanf("%d",&votoEleitor4);
+    switch(votoEleitor4){
+        case 1:
+            nVotosCandidato1 +=1;
+            break;
+        case 2:
+            nVotosCandidato2 +=1;
+            break;
+        case 3:
+            nVotosCandidato3 +=1;
+            break;
+        default:
+            printf("Voto errado!\n");
+    }
+
+    
     
     printf("Qual o voto do eleitor 5?\n");
     scanf("%d",&votoEleitor5);
+    switch(votoEleitor4){
+        case 1:
+            nVotosCandidato1 +=1;
+            break;
+        case 2:
+            nVotosCandidato2 +=1;
+            break;
+        case 3:
+            nVotosCandidato3 +=1;
+            break;
+        default:
+            printf("Voto errado!\n");
+    }
+
+    
     
     printf("O eleitor 1 votou em: %d\n",votoEleitor1);
     printf("O eleitor 2 votou em: %d\n",votoEleitor2);
