@@ -18,6 +18,7 @@ int main() {
     int nVotosCandidato1 = 0;
     int nVotosCandidato2 = 0;
     int nVotosCandidato3 = 0;
+    int nVotosNulos = 0;
     
     /*
      * Inicialmente, apenas 5 eleitores
@@ -46,13 +47,14 @@ int main() {
                 nVotosCandidato3 +=1;
                 break;
             default:
-                printf("Voto errado!\n");
+                nVotosNulos += 1;
         }
     }
             
     printf("Votos Candidato 1: %d\n",nVotosCandidato1);
     printf("Votos Candidato 2: %d\n",nVotosCandidato2);
     printf("Votos Candidato 3: %d\n",nVotosCandidato3);
+    printf("Votos Nulos: %d\n",nVotosNulos);
     
     //Assume inicialmente que Candidato 1 é o vencedor
     int candidatoVencedor = 1;
