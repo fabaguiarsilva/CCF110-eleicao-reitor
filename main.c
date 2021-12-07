@@ -22,8 +22,8 @@ int main() {
     /*
      * Inicialmente, apenas 5 eleitores
      */
-    int votoEleitor1,votoEleitor2,votoEleitor3,
-            votoEleitor4,votoEleitor5;
+    int nAptosVotar = 5;
+    int voto;
     
     printf("Digite:\n");
     printf("1 - para votar no candidato 1\n");
@@ -31,85 +31,25 @@ int main() {
     printf("3 - para votar no candidato 3\n");
     printf("*************************\n\n");
     
-    printf("Qual o voto do eleitor 1?\n");
-    scanf("%d",&votoEleitor1);
-    if(votoEleitor1 == 1){
-        nVotosCandidato1 += 1;
-    }else if(votoEleitor1 == 2){
-        nVotosCandidato2 += 1;
-    }else if(votoEleitor1 == 3){
-        nVotosCandidato3 += 1;
-    }    
     
-    printf("Qual o voto do eleitor 2?\n");
-    scanf("%d",&votoEleitor2);
-    switch(votoEleitor2){
-        case 1:
-            nVotosCandidato1 +=1;
-            break;
-        case 2:
-            nVotosCandidato2 +=1;
-            break;
-        case 3:
-            nVotosCandidato3 +=1;
-            break;
-        default:
-            printf("Voto errado!\n");
+    for(int i=1;i<(nAptosVotar+1);i++){
+        printf("Voto do eleitor %d:\n",i);
+        scanf("%d",&voto);
+        switch(voto){
+            case 1:
+                nVotosCandidato1 +=1;
+                break;
+            case 2:
+                nVotosCandidato2 +=1;
+                break;
+            case 3:
+                nVotosCandidato3 +=1;
+                break;
+            default:
+                printf("Voto errado!\n");
+        }
     }
-    
-    
-    printf("Qual o voto do eleitor 3?\n");
-    scanf("%d",&votoEleitor3);
-    switch(votoEleitor3){
-        case 1:
-            nVotosCandidato1 +=1;
-            break;
-        case 2:
-            nVotosCandidato2 +=1;
-            break;
-        case 3:
-            nVotosCandidato3 +=1;
-            break;
-        default:
-            printf("Voto errado!\n");
-    }
-
-    
-    
-    printf("Qual o voto do eleitor 4?\n");
-    scanf("%d",&votoEleitor4);
-    switch(votoEleitor4){
-        case 1:
-            nVotosCandidato1 +=1;
-            break;
-        case 2:
-            nVotosCandidato2 +=1;
-            break;
-        case 3:
-            nVotosCandidato3 +=1;
-            break;
-        default:
-            printf("Voto errado!\n");
-    }
-
-    
-    
-    printf("Qual o voto do eleitor 5?\n");
-    scanf("%d",&votoEleitor5);
-    switch(votoEleitor5){
-        case 1:
-            nVotosCandidato1 +=1;
-            break;
-        case 2:
-            nVotosCandidato2 +=1;
-            break;
-        case 3:
-            nVotosCandidato3 +=1;
-            break;
-        default:
-            printf("Voto errado!\n");
-    }
-
+            
     printf("Votos Candidato 1: %d\n",nVotosCandidato1);
     printf("Votos Candidato 2: %d\n",nVotosCandidato2);
     printf("Votos Candidato 3: %d\n",nVotosCandidato3);
