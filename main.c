@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define FLAG_TESTE 0
 
@@ -17,6 +18,11 @@ int main() {
      */
     int nCandidatos = 3;
     int nEleitores = 5;
+    
+    char nomeCandidato1[30];
+    char nomeCandidato2[30];
+    char nomeCandidato3[30];    
+    
     
     int numerosCandidatos[nCandidatos];
     
@@ -37,13 +43,41 @@ int main() {
         }else{
             printf("Digite o número do candidato: %d\n",(i+1));
             scanf("%d",&numerosCandidatos[i]);
+            
+            //ATENCAO: só funciona pois tenho certeza que
+            //nCandidatos == 3
+            printf("Digite o nome do candidado: %d\n",(i+1));
+            if(i == 0){
+                //scanf("%s",nomeCandidato1);
+                fflush(stdin);
+                gets(nomeCandidato1);
+            }else if(i == 1){
+                //scanf("%s",nomeCandidato2);
+                //getchar();
+                fflush(stdin);
+                gets(nomeCandidato2);
+            }else if(i == 2){
+                //scanf("%s",nomeCandidato3);
+                //getchar();
+                fflush(stdin);
+                gets(nomeCandidato3);
+            }            
         }
     }
     
     printf("Digite:\n");
     for(int i=0; i<nCandidatos; i++){
-        printf("%d para votar no candidato %d\n",
-                numerosCandidatos[i],(i+1));
+        char nome[30];
+        if(i == 0){
+            strcpy(nome, nomeCandidato1);
+        }else if(i == 1){
+            strcpy(nome, nomeCandidato2);
+        }else if(i == 2){
+            strcpy(nome, nomeCandidato3);
+        }
+                
+        printf("%d para votar no candidato %s\n",
+                numerosCandidatos[i],nome);
     }
     printf("*************************\n\n");
     
