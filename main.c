@@ -16,8 +16,19 @@ int main() {
      * Inicialmente, apenas 3 candidatos a reitor
      * e 5 eleitores
      */
-    int nCandidatos = 3;
-    int nEleitores = 5;
+    int nCandidatos;
+    int nEleitores;
+    
+    if(FLAG_TESTE){
+        nCandidatos = 3;
+        nEleitores = 5;
+    }else{
+        printf("Digite a quantidade de candidatos: ");
+        scanf("%d",&nCandidatos);
+        printf("Digite a quantidade de eleitores: ");
+        scanf("%d",&nEleitores);        
+    }
+    
     
     //armazena o nome de cada candidato, um por linha
     char nomesCandidatos[nCandidatos][30];    
