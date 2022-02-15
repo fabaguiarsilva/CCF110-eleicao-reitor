@@ -9,15 +9,24 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define FLAG_TESTE 0
+#define FLAG_TESTE 1
 
 int main() {
-    /*
-     * Inicialmente, apenas 3 candidatos a reitor
-     * e 5 eleitores
-     */
     int nCandidatos;
     int nEleitores;
+    
+    //armazena o número de cada candidato
+    int* numerosCandidatos;
+    
+    //armazena os votos de cada candidato, com
+    //um mapeamento 1 para 1 do índice do vetor
+    //numerosCandidatos
+    int *votosCandidatos;
+
+    //armazena as matrítulas dos eleitores (alunos, professores, etc)
+    int* matriculasEleitores;
+
+    
     
     if(FLAG_TESTE){
         nCandidatos = 3;
@@ -28,27 +37,20 @@ int main() {
         printf("Digite a quantidade de eleitores: ");
         scanf("%d",&nEleitores);        
     }
-    
-    
+        
     //armazena o nome de cada candidato, um por linha
     char nomesCandidatos[nCandidatos][30];    
     
-    //armazena o número de cada candidato
-    int numerosCandidatos[nCandidatos];
+    numerosCandidatos = malloc(nCandidatos * sizeof(int));
     
-    //armazena os votos de cada candidato, com
-    //um mapeamento 1 para 1 do índice do vetor
-    //numerosCandidatos
-    int votosCandidatos[nCandidatos];
+    
+    votosCandidatos = malloc(nCandidatos * sizeof(int));
     for(int i=0; i<nCandidatos; i++){
         votosCandidatos[i] = 0;
     }
     
     int nVotosNulos = 0;
-    
-    //armazena as matrítulas dos eleitores (alunos, professores, etc)
-    int matriculasEleitores[nEleitores];
-    
+        
     //Lê os números dos candidatos
     for(int i=0; i<nCandidatos; i++){
         if(FLAG_TESTE){
@@ -74,7 +76,7 @@ int main() {
     }
     printf("*************************\n\n");
     
-    
+    matriculasEleitores = malloc(nEleitores * sizeof(int));
     //Lê as matrículas dos eleitores
     for(int i=0; i<nEleitores; i++){
         if(FLAG_TESTE){
