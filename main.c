@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "candidato.h"
 
 #define FLAG_TESTE 1
 
@@ -15,18 +16,11 @@ int main() {
     int nCandidatos;
     int nEleitores;
     
-    //armazena o número de cada candidato
-    int* numerosCandidatos;
-    
-    //armazena os votos de cada candidato, com
-    //um mapeamento 1 para 1 do índice do vetor
-    //numerosCandidatos
-    int *votosCandidatos;
+    //armazena a lista de candidatos
+    candidato* listaCandidatos;
 
     //armazena as matrítulas dos eleitores (alunos, professores, etc)
     int* matriculasEleitores;
-
-    
     
     if(FLAG_TESTE){
         nCandidatos = 3;
@@ -37,42 +31,35 @@ int main() {
         printf("Digite a quantidade de eleitores: ");
         scanf("%d",&nEleitores);        
     }
+            
+    listaCandidatos = malloc(nCandidatos * sizeof(candidato));
         
-    //armazena o nome de cada candidato, um por linha
-    char nomesCandidatos[nCandidatos][30];    
-    
-    numerosCandidatos = malloc(nCandidatos * sizeof(int));
-    
-    
-    votosCandidatos = malloc(nCandidatos * sizeof(int));
-    for(int i=0; i<nCandidatos; i++){
-        votosCandidatos[i] = 0;
-    }
-    
     int nVotosNulos = 0;
         
-    //Lê os números dos candidatos
+    //Lê os os candidatos
     for(int i=0; i<nCandidatos; i++){
+        listaCandidatos[i].votos = 0;
         if(FLAG_TESTE){
-            numerosCandidatos[i] = (i+1);
+            listaCandidatos[i].numero = (i+1);
             char snum[5];
             sprintf(snum, "%d", (i+1));
-            strcpy(nomesCandidatos[i],snum);
+            strcpy(listaCandidatos[i].nome,snum);
         }else{
             printf("Digite o número do candidato: %d\n",(i+1));
-            scanf("%d",&numerosCandidatos[i]);
+            scanf("%d",&listaCandidatos[i].numero);
             
             printf("Digite o nome do candidado: %d\n",(i+1));
             //scanf("%s",nomesCandidatos[i);
             fflush(stdin);            
-            gets(nomesCandidatos[i]);
+            gets(listaCandidatos[i].nome);
         }
     }
     
     printf("Digite:\n");
     for(int i=0; i<nCandidatos; i++){                        
         printf("%d para votar no candidato %s\n",
-                numerosCandidatos[i],nomesCandidatos[i]);
+                listaCandidatos[i].numero,
+                listaCandidatos[i].nome);
     }
     printf("*************************\n\n");
     
@@ -97,8 +84,8 @@ int main() {
         
         int nulo = 1;
         for(int j=0; j<nCandidatos; j++){            
-            if(numerosCandidatos[j] == voto){
-                votosCandidatos[j]++;
+            if(listaCandidatos[j].numero == voto){
+                listaCandidatos[j].votos++;
                 nulo = 0;
                 break;
             }
@@ -111,9 +98,9 @@ int main() {
     
     for(int i=0; i<nCandidatos; i++){
         printf("O Candidato %s (%d) teve %d votos\n",
-                nomesCandidatos[i],
-                numerosCandidatos[i],
-                votosCandidatos[i]);
+                listaCandidatos[i].nome,
+                listaCandidatos[i].numero,
+                listaCandidatos[i].votos);
     }
     
     printf("Votos nulos: %d\n",nVotosNulos);
@@ -123,11 +110,12 @@ int main() {
     int empate = 0;
     
     for(int i=1; i<nCandidatos; i++){
-        if(votosCandidatos[i] > votosCandidatos[indiceVencedor]){
+        if(listaCandidatos[i].votos > 
+                    listaCandidatos[indiceVencedor].votos){
             indiceVencedor = i;
             empate = 0;
-        }else if(votosCandidatos[i] == 
-                                votosCandidatos[indiceVencedor]){
+        }else if(listaCandidatos[i].votos == 
+                                listaCandidatos[indiceVencedor].votos){
             empate = 1;
         }
     }
@@ -135,9 +123,9 @@ int main() {
     
     if(empate == 0){
         printf("O vencedor é o candidato %s (%d) com %d votos\n",
-                nomesCandidatos[indiceVencedor],
-                numerosCandidatos[indiceVencedor],
-                votosCandidatos[indiceVencedor]);
+                listaCandidatos[indiceVencedor].nome,
+                listaCandidatos[indiceVencedor].numero,
+                listaCandidatos[indiceVencedor].votos);
     }else{
         printf("Empate! O que fazer??\n");
     }
