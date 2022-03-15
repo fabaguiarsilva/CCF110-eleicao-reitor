@@ -9,8 +9,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "candidato.h"
+#include "eleitor.h"
 
-#define FLAG_TESTE 1
+#define FLAG_TESTE 0
 
 int main() {
     int nCandidatos;
@@ -19,8 +20,8 @@ int main() {
     //armazena a lista de candidatos
     candidato* listaCandidatos;
 
-    //armazena as matrítulas dos eleitores (alunos, professores, etc)
-    int* matriculasEleitores;
+    //armazena os eleitores (alunos, professores, etc)
+    eleitor* listaEleitores;
     
     if(FLAG_TESTE){
         nCandidatos = 3;
@@ -52,6 +53,17 @@ int main() {
             //scanf("%s",nomesCandidatos[i);
             fflush(stdin);            
             gets(listaCandidatos[i].nome);
+            
+            printf("Digite o dia do nascimento do candidato %d\n",(i+1));
+            scanf("%d",&listaCandidatos[i].dataNascimento.dia);
+            
+            printf("Digite o mês do nascimento do candidato %d\n",(i+1));
+            scanf("%d",&listaCandidatos[i].dataNascimento.mes);
+
+            printf("Digite o ano do nascimento do candidato %d\n",(i+1));
+            scanf("%d",&listaCandidatos[i].dataNascimento.ano);
+            
+            
         }
     }
     
@@ -63,14 +75,22 @@ int main() {
     }
     printf("*************************\n\n");
     
-    matriculasEleitores = malloc(nEleitores * sizeof(int));
+    listaEleitores = malloc(nEleitores * sizeof(eleitor));
     //Lê as matrículas dos eleitores
     for(int i=0; i<nEleitores; i++){
         if(FLAG_TESTE){
-            matriculasEleitores[i] = (i+1);
+            listaEleitores[i].matricula = (i+1);
+            char snum[5];
+            sprintf(snum, "%d", (i+1));
+            strcpy(listaEleitores[i].departamento,snum);
+            
         }else{
             printf("Digite a matrícula do eleitor %d\n",(i+1));
-            scanf("%d",&matriculasEleitores[i]);
+            scanf("%d",&listaEleitores[i].matricula);
+            
+            printf("Digite o departamento do eleitor: %d\n",(i+1));
+            fflush(stdin);            
+            gets(listaEleitores[i].departamento);            
         }
     }
    
@@ -78,8 +98,10 @@ int main() {
     int voto;
     
     for(int i=0; i<nEleitores; i++){
-        printf("Digite o voto do eleitor com matricula %d\n",
-                matriculasEleitores[i]);
+        printf("Digite o voto do eleitor com matricula %d"
+                " do %s\n",
+                listaEleitores[i].matricula,
+                listaEleitores[i].departamento);
         scanf("%d",&voto);
         
         int nulo = 1;
@@ -126,6 +148,12 @@ int main() {
                 listaCandidatos[indiceVencedor].nome,
                 listaCandidatos[indiceVencedor].numero,
                 listaCandidatos[indiceVencedor].votos);
+        
+        printf("A data de nascimento do vencedor é: %d/%d/%d\n",
+                listaCandidatos[indiceVencedor].dataNascimento.dia,
+                listaCandidatos[indiceVencedor].dataNascimento.mes,
+                listaCandidatos[indiceVencedor].dataNascimento.ano);
+        
     }else{
         printf("Empate! O que fazer??\n");
     }
