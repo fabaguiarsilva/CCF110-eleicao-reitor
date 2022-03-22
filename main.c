@@ -9,7 +9,8 @@
 
 int main() {
     
-    ler_candidatos();
+    //ler_candidatos();
+    ler_candidatos_arquivo();
     
     ler_eleitores();
                
@@ -17,7 +18,8 @@ int main() {
     
     iniciar_votacao();
         
-    imprimir_votos();
+    //imprimir_votos();
+    salvar_votos_arquivo();
     
     apurar_eleicao();
         

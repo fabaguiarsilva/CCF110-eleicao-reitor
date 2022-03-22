@@ -1,0 +1,4 @@
+Nome Candidato 1;111;
+O Candidato 2;2;
+Candidato do Povo;33333;
+Qualquer Candididato;444;

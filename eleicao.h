@@ -31,6 +31,10 @@ candidato ler_candidato(int count);
 
 void ler_candidatos();
 
+void ler_candidatos_arquivo();
+
+candidato ler_candidato_linha(char linha[]);
+
 void ler_quantidade_eleitores();
 
 eleitor ler_eleitor(int count);
@@ -46,6 +50,8 @@ int verifica_candidato(int voto);
 void iniciar_votacao();
 
 void imprimir_votos();
+
+void salvar_votos_arquivo();
 
 void apurar_eleicao();
 
