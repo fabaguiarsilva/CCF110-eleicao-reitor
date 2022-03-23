@@ -44,6 +44,9 @@ void ler_candidatos(){
 candidato ler_candidato_linha(char linha[]){
     //printf("Linha=%s\n",linha);
     candidato novo_candidato;
+    
+    novo_candidato.votos = 0;
+    
     int i=0;//percorrer linha
     int cont=0;//percorrer vetores de nome e numero
     while(linha[i] != ';'){
@@ -87,6 +90,40 @@ void ler_candidatos_arquivo(){
     fclose(arquivo_candidatos);
     
 }
+
+
+void ler_candidatos_arquivo2(){
+    
+    ler_quantidade_candidatos();
+    
+    listaCandidatos = malloc(nCandidatos * sizeof(candidato));
+
+    FILE *arquivo_candidatos;
+    if((arquivo_candidatos = fopen("candidatos2.txt","r")) == NULL){
+        printf("Não foi possível abrir o arquivo de candidatos!");
+        return;
+    }
+        
+    for(int i=0; i<nCandidatos; i++){
+        candidato novoCandidato;
+        novoCandidato.votos = 0;
+        char num[30] = "";
+        
+        //lê o nome
+        fgets(novoCandidato.nome,30,arquivo_candidatos);
+        novoCandidato.nome[strlen(novoCandidato.nome) - 1] = '\0';
+        
+        //lê o número
+        fgets(num, 30, arquivo_candidatos);
+        novoCandidato.numero = atoi(num);
+        
+        listaCandidatos[i] = novoCandidato;        
+    }
+    
+    fclose(arquivo_candidatos);
+    
+}
+
 
 
 void ler_quantidade_eleitores(){

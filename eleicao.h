@@ -33,6 +33,8 @@ void ler_candidatos();
 
 void ler_candidatos_arquivo();
 
+void ler_candidatos_arquivo2();
+
 candidato ler_candidato_linha(char linha[]);
 
 void ler_quantidade_eleitores();

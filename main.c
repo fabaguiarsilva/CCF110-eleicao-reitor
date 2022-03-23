@@ -10,7 +10,8 @@
 int main() {
     
     //ler_candidatos();
-    ler_candidatos_arquivo();
+    //ler_candidatos_arquivo();
+    ler_candidatos_arquivo2();
     
     ler_eleitores();
                
